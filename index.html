@@ -143,48 +143,26 @@
 			</nav>
 		</div>
 		<div class="topbar">
-			<nav class="user-nav right">
-				<div class="user-online">
-					<div class="user-avatar">
-						<img src="assets/images/user-avatar.png">
-					</div>
-                    <span class="user-name">john doe</span>
-					<hr>
-                    <div class="clear"></div>
-					<ul>
-						<li>
-							<a href="#">Settings</a>
-						</li>
-						<li>
-							<a href="#">Login</a>
-						</li>
-					</ul>
-				</div>
-				<input type="checkbox" id="panel-right">
-				<label for="panel-right" class="panel-open">
-					<i class="fa fa-quote-right"></i>
-				</label>
-				<div class="panel-right">
-					<input type="checkbox" id="panel-right">
-					<label for="panel-right" class="panel-close">
-                        <i class="fa fa-chevron-right"></i>
-					</label>
-					<input type="radio" name="option" id="op-1" checked>
-					<label for="op-1" class="panel-menu">notifikasi</label>
-					<input type="radio" name="option" id="op-2">
-					<label for="op-2"  class="panel-menu">catatan</label>
-					<div class="panel-container">
-						<div class="panel-1">
-							notifikasi
-						</div>
-						<div class="panel-2">
-							catatan
-						</div>
-					</div>
-				</div>
-			</nav>
-			<div class="site-logo">aeris</div>
-		</div>
+            <nav class="user-nav right">
+                <input type="checkbox" id="panel-right">
+                <label for="panel-right">
+                    <div class="user-avatar">
+                        <img src="assets/images/user-avatar.png">
+                    </div>
+                    <span class="user-name">ir.one</span>
+                </label>
+                <div class="panel-right">
+                    <div class="panel-container">
+                        
+                    </div>
+                    <div class="footer-menu">
+                        <a href="{{ url( 'profile' ) }}"><i class="fa fa-gear"></i></a>
+                        <a href="{{ url( 'logout' ) }}"><i class="fa fa-rocket"></i> Logout</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="site-logo">plan:e</div>
+        </div>
 		<div class="breadcrumb">
 			<ul class="access">
 				<!-- parent page -->

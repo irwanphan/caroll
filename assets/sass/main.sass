@@ -8,18 +8,23 @@
  */ 
 
 // not a superman tonight
-// @import "tatami-base"
+@import "tatami-base"
 // @import "tatami-breakpoints"
 
 // colors
+$black: #000
 $white: #fff
 $white-min: #eaeaea
 $grey-light: #dedede
 $grey: #888
+$grey-dark: #2e2e2e
 $orange: #da5f00
+$orange-lite: #f9dc85
+$navy-lite: #a1decb
 $green: #11b300
 $blue: #466ab2
-$red: #fb525a
+$blue-tweet: #44a0f8
+$red: #f05454
 
 $theme-color: $orange
 $complementer-color: $green
@@ -83,6 +88,23 @@ $browsers: '', '-o-', '-ms-', '-moz-', '-webkit-'
 	display: block
 	clear: both
 
+// grid fix
+.small-hidden
+	@media(max-width: 640px)
+		display: none !important
+.medium-right
+	@media (min-width: 641px)
+		float: right
+		text-align: right
+.small-full
+	@media(max-width: 640px)
+		width: 100%
+.small-limit-y
+	@media(max-width: 640px)
+		overflow-y: hidden
+.limit-y
+	overflow-y: hidden
+
 // default styling
 *, *:before, *:after
 	box-sizing: border-box
@@ -116,6 +138,20 @@ input[type="radio"], input[type="checkbox"], a
 	float: right
 .container-fluid
 	width: 100%
+.container
+	@include container(1020px)
+.button
+	@include borderradius(5px)
+	text-align: center
+	display: block
+	// padding: 8px
+	border: 1px solid white
+	&.theme
+		color: $theme-color
+		background-color: lighten($theme-color, 25%)
+		&:hover
+			color: darken($theme-color, 15%)
+			background-color: lighten($theme-color, 15%)
 
 // show me the money
 body
@@ -123,19 +159,39 @@ body
 	padding: 0
 	color: #2e2e2e
 	background-color: #f8f8f8
-	.section-title
-		text-transform: uppercase
+	.pause
+		overflow-y: hidden
+	span.section-title
+		margin: 12px 0
 		display: block
-		width: 100%
+		font-size: 22px
+		font-weight: bold
+		padding: 0 0.6125em
+		color: darken($grey, 15%)
 	// left sidebar toggler
 	#sidebar-toggler
 		display: none
 		&:checked
 			& ~ label
 				color: $white
-				padding-left: + 256px
+				right: 24px
 			& ~ header .sidebar
 				left: 0
+			@media(min-width: 641px)
+				& ~ label[for="sidebar-toggler"]:after
+					display: block
+					left: 300px
+					top: 0
+					right: 0
+					bottom: 0
+					width: 100vw	
+					height: 100vh
+					position: fixed
+					z-index: 6
+					content: " "
+					box-shadow: 0 0 0 0 rgba(0,0,0,0.18)
+					background-color: rgba(0,0,0,0.01)
+					@include transitions(0.3s)
 			// if the toggler slide the .wrapper-content as well
 			// & ~ .content-wrapper
 			// 	margin-left: $topbar-left-padding-opened
@@ -143,6 +199,20 @@ body
 			// & ~ header .breadcrumb
 			// 	padding-left: 0
 			// 	margin-left: $topbar-left-padding-opened
+	// mobile menu scrolllll
+	@media(max-width: 640px)
+		#sidebar-toggler
+			&:checked
+				& ~ label
+					background-color: $sidebar-logo-bg-color
+					@include borderradius(50%)
+					@include squareicon(50px)
+					margin: 6px
+					padding: 0
+				& ~ header .sidebar
+					overflow-y: scroll
+					overflow-x: hidden
+
 	label[for="sidebar-toggler"]
 		color: $sidebar-text-color
 		position: fixed
@@ -150,7 +220,13 @@ body
 		font-size: 28px
 		padding: 12px 12px 12px 22px
 		&:hover
-			color: $white
+			color: darken($sidebar-text-color, 10%)
+	@media (min-width: 641px)
+		#sidebar-toggler
+			&:checked
+				& ~ label
+					left: 0
+					padding-left: + 256px
 	header
 		z-index: 6
 		.site-logo
@@ -160,7 +236,7 @@ body
 			width: auto
 		// topbar section
 		.topbar
-			padding-left: $topbar-left-padding-default
+			padding-left: $topbar-left-padding-default - 22px
 			position: fixed
 			width: 100%
 			background-color: $topbar-bg-color
@@ -168,122 +244,85 @@ body
 			.site-logo
 				color: $topbar-logo-color
 				display: inline-block
-			// login user avatar and menu
-			.user-nav
-				padding: 4px
-				width: auto
-				display: inline-block
-				text-align: right
-				position: fixed
-				top: 0
-				right: 0
-				.user-online
-					padding: 8px 12px
-					margin-right: 77px
-					right: 80px
-					height: 50px
-					overflow: hidden
-					display: block
-					@include borderradius(10%)
-					@include transitions(.3s)
-					&:hover
-						height: auto
-						overflow: visible
-						background-color: lighten($theme-color,40%)
-					hr
-						border-top: 1px solid $theme-color
-						border-bottom: 0
-					li:hover a
-						color: $theme-color
-					.user-name
-						float: left
-						line-height: 36px
-						margin-right: 6px
-						display: inline-block
-					.user-avatar
-						display: inline-block
-						overflow: hidden
-						@include squareicon(36px)
-						@include borderradius(50%)
-						img
-							width: 100%
 			// right panel toggler button
 			#panel-right
 				display: none
+			// login user avatar and menu
 			label[for="panel-right"]
-				position: absolute
-			.panel-open
-				@include squareicon(36px)
-				@include borderradius(50%)
-				background-color: $grey-light
-				display: block
-				right: 42px
+				position: relative
+				display: inline-block
+				width: auto
+				right: 16px
 				top: 12px
-				&:hover
-					background-color: lighten($theme-color,36%)
-					color: $theme-color
-			#panel-right:checked ~ .panel-right
-				right: 0
-				box-shadow: -2px 0 8px 0 $grey-light
+				z-index: 3
+				&> .user-avatar
+					background-color: lighten($blue, 12%)
+					display: inline-block
+					overflow: hidden
+					height: 36px
+					width: 36px
+					@include borderradius(50%)
+					img
+						width: 100%
+				.user-name
+					float: left
+					line-height: 36px
+					margin-right: 6px
+					display: inline-block
+					@extend .small-hidden
+			#panel-right:checked
+				&~ .panel-right
+					right: 0
+					box-shadow: -2px 0 8px 0 $grey-light
+				&+ label
+					color: $white-min
+					&:hover
+						color: $white
 			// right panel // off-canvas
 			.panel-right
 				@include transitions(.3s)
 				position: fixed
 				top: 0
 				bottom: 0
-				right: -300px
-				width: 300px
+				right: -100%
+				width: 100%
 				text-align: center
 				background-color: $panel-header-bg-color
-				.panel-close
-					color: $panel-text-color
-					right: 12px
-					top: 14px
-					&:hover
-						color: $white
-				input[type="radio"]
-					display: none
-				.panel-menu
-					text-transform: capitalize
-					color: $panel-text-color
+				.panel-container 
+					position: absolute
+					background: lighten($white-min, 5%)
+					top: 60px
+					width: 100%
+					bottom: 50px
+				.footer-menu
+					position: absolute
+					bottom: 0
+					width: 100%
 					height: 50px
 					line-height: 50px
-					right: 0
-					top: 0
-					margin: 0 12px
-					&:hover
-						color: $white
-				.panel-container div
-					background-color: $panel-bg-color
-					position: absolute
-					width: 100%
-					top: 50px
-					bottom: 50px
-					right: -300px
-				input#op-1:checked
-					&~ label[for="op-1"]
-						color: $white-min
-					&~ .panel-container .panel-1
-						right: 0
-				input#op-2:checked
-					&~ label[for="op-2"]
-						color: $white-min
-					&~ .panel-container .panel-2
-						right: 0
+					font-size: 18px
+					color: $white-min
+					text-align: right
+					a
+						display: inline-block
+						padding: 0 16px
+						&:hover
+							background-color: lighten($theme-color, 8%)
 		// topbar-breadcrumb section
 		.breadcrumb
-			padding-left: $topbar-left-padding-default
+			padding-left: 0
 			margin-left: 0
-			height: 36px
 			background-color: $breadcrumb-bg-color
 			width: 100%
 			position: fixed
-			top: 62px
+			top: 60px
+			height: auto
 			z-index: 2
+			font-size: 12px
 			@include transitions(.3s)
 			ul.access
 				margin: 0
-				padding-left: 12px
+				padding: 0 12px
 				display: inline-block
 				li
 					@include valigncenter(36px)
@@ -301,13 +340,15 @@ body
 						content: "\f105"
 					&:last-child:after
 						content: " "
+			@media (min-width: 641px)
+				padding-left: $topbar-left-padding-default
 		// left sidebar section
 		.sidebar
 			position: fixed
 			color: $sidebar-text-color
 			background-color: $sidebar-bg-color
-			width: 300px
-			left: -232px
+			width: 100%
+			left: -100%
 			top: 0
 			bottom: 0
 			z-index: 7
@@ -323,9 +364,14 @@ body
 				padding: 12px 12px 12px 30px
 				li
 					text-transform: capitalize
-					height: 50px
+					min-height: 50px
 					a
 						display: block
+						line-height: 40px 
+						&:hover
+							color: $white
+							&~.detail
+								color: $sidebar-text-color
 					.detail
 						display: block
 						width: auto
@@ -336,33 +382,77 @@ body
 						font-weight: bold
 						background-color: $sidebar-icon-bg-color
 						@include squareicon(40px)
-					&:hover
-						color: $white
-						.detail
-							color: $sidebar-text-color
+					.expand
+						display: block
+						line-height: 40px
+					.expand-check
+						position: absolute
+						cursor: pointer
+						width: 100%
+						height: 40px
+						z-index: 1
+						opacity: 0
+						&~a
+							color: $white
+						&:checked
+							&~ul.sub-menu
+								float: left
+								margin: 5px 0
+								max-height: 0
+								opacity: 0
+								transform: translate(0, 50%)
+							&~a
+								color: $sidebar-text-color
+							&:hover
+								&~a
+									color: $white
+					.sub-menu
+						margin: 6px 14px 12px
+						// uses fontawesome .fa as sub menu icon floats right
+						i.fa
+							float: right
+							line-height: 40px
+
+			@media (min-width: 641px)
+				width: 300px
+				left: -232px
+		@media (min-width: 641px)
+			.topbar
+				padding-left: $topbar-left-padding-default
+				.panel-right
+					right: -300px
+					width: 300px
+				#panel-right:checked
+					&~ .panel-right
+						right: 0
 
 	.content-wrapper
-		padding: 96px 0 0 68px
+		padding-top: 96px
 		width: 100%
 		margin-left: 0
 		@include transitions(.3s)
 		.content-container-fluid
 			overflow-y: auto
 			padding: 12px
-			// table using jquery.dynatable
-			table
-				width: 100%
-				margin: 12px 0
-				th
-					background-color: $table-header-bg-color
-				th, td
-					padding: 6px
-				td
-					border-bottom: 1px solid $table-border-color
-				p
-					margin: 0
+		// force table width & styles
+		table
+			width: 100%
+			th
+				background-color: $table-header-bg-color
+			th, td
+				padding: 6px
+			td
+				border-bottom: 1px solid $table-border-color
+			p
+				margin: 0
+		@media (min-width: 641px)
+			padding-left: 68px
+			
 	// form
 	.form-default
+		hr
+			width: 100%
+			border-top: 1px solid $grey-light
 		fieldset
 			width: 100%
 			display: block
@@ -371,41 +461,63 @@ body
 			display: inline-block
 			vertical-align: top
 			text-transform: capitalize
-		select, input[type="text"], input[type="password"], textarea
+			line-height: 36px
+		select, input[type="text"], input[type="number"], input[type="password"], textarea
 			border: 1px solid darken($grey-light, 10%)
 			padding: 6px
 			&:hover, &:active, &:focus
-				border-color: $green
+				border-color: $theme-color
 		textarea
 			resize: none
 			height: 108px
 		select
 			cursor: pointer
-		input[type="submit"]
+		input[type="submit"], input[type="reset"], button, a.button
 			display: inline-block
-			height: 36px
 			border: 0
-			background-color: $grey-light
+			background-color: lighten($theme-color,5%)
+			color: $white-min
+			@include valigncenter(36px)
 			&:hover
-				background-color: lighten($theme-color,36%)
+				background-color: lighten($theme-color,23%)
 				color: $theme-color
-	.check-app
-		padding: 12px
-		.check-activity-group
-			text-transform: uppercase
-			font-weight: bold
-			color: $grey
+			&.cancel
+				background-color: darken($grey, 15%)
+				&:hover
+					color: $grey
+					background-color: lighten($grey, 25%)
+		input[type="radio"]
+			@extend .hidden
+			& ~ label .radio
+				@include squareicon(40px)
+				@include transitions(.2s)
+				font-weight: bold
+				color: $grey
+				background-color: $grey-light
+				display: inline-block
+				margin-right: 8px
+			&:checked + label .radio
+				color: $theme-color
+				background-color: lighten($theme-color,23%)
+			& ~ label
+				margin-right: 12px
+				&:last-child
+					margin-right: 0
+		.button
+			margin: 1px
+			box-sizing: border-box
+	
 		.check-list
 			li
 				margin-bottom: 8px
 				&:hover .check-ok
-					color: $green
-					background-color: lighten($green,36%)
+					color: $theme-color
+					background-color: lighten($theme-color,23%)
 			input[type="checkbox"]
 				@extend .hidden
 				&:checked ~ label .check-ok
-					color: $green
-					background-color: lighten($green,36%)
+					color: $theme-color
+					background-color: lighten($theme-color,23%)
 					&:before
 						content: "Ok"
 			.check-ok
@@ -426,7 +538,7 @@ body
 			padding: 8px 24px
 			background-color: $grey-light
 			&:hover
-				background-color: lighten($theme-color,36%)
+				background-color: lighten($theme-color,23%)
 				color: $theme-color
 		.check-log
 			width: 100%
@@ -494,10 +606,50 @@ body
 
 	// login page
 	.login-wrapper
+		width: 100%
+		height: 100%
+		position: fixed
+		.half-top
+			color: lighten($grey, 2%)
+			text-align: center
+			width: 100%
+			// bottom: 50%
+			// position: fixed
+			img
+				width: 100%
+				height: auto
+			.app-title
+				font-family: georgia, verdana
+				font-size: 5em
+			// fix
+			@media (max-width: 640px)
+				// bottom: 60%
+				.app-title
+					font-size: 4em
 		.login-layer
-			// width: 640px
-			background-color: lighten($theme-color, 40%)
-			position: fixed
-			top: 120px
+			// top: 50%
+			bottom: 0
+			width: 100%
+			// background-color: lighten($theme-color, 28%)
+			// position: fixed
 			form
-				padding: 32px
+				padding: 32px 12px
+				label
+					// text-align: right
+				button
+					width: 100%
+			// fix
+			@media (max-width: 640px)
+				top: 40%
+				form
+					label, input[type="text"], input[type="password"]
+						width: 100%
+					button
+						margin-top: 8px
+		footer
+			font-size: 12px
+			position: absolute
+			width: 100vw
+			text-align: center
+			color: $grey
+			bottom: 12px
