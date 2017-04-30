@@ -45,20 +45,35 @@
     <!-- Overwrite CSS using this -->
     <link rel="stylesheet" type="text/css"  href="assets/css/overwrite.css">
     
-    <!-- Dynatable Custom Stylesheet -->
-    <link rel="stylesheet" type="text/css"  href="assets/css/jquery.dynatable.css">
+    <!-- JQuery DataTable -->
+    <link rel="stylesheet" href="assets/plugin/datatable/media/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="assets/plugin/datatable/extensions/Responsive/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="assets/plugin/jquery-datetimepicker/jquery.datetimepicker.css">
     <!-- FontAwesome.org -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<!-- Included javascript files 
 	================================================== -->
 	<script type="text/javascript" src="assets/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.dynatable.js"></script>
+    <script type="text/javascript" src="assets/plugin/datatable/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/plugin/datatable/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="assets/plugin/jquery-datetimepicker/jquery.datetimepicker.full.js"></script>
     <script type="text/javascript">
-		$(document).ready( function() {
-			$('#table-app').dynatable();
-			$('#table-app-ver').dynatable();
-			$('#table-app-fin').dynatable();
+        $(document).ready( function() {
+            $('#table-app').dataTable({
+                responsive: true
+            });
+            $('#table-app-ver').dataTable({
+                responsive: true
+            });
+            $('#table-app-fin').dataTable({
+                responsive: true
+            });
+
+            var datetimepicker_params = {timepicker: false, format: 'Y-m-d'};
+
+            $( '#txt-time_start' ).datetimepicker(datetimepicker_params);
+
 		});
 	</script>
 
@@ -74,7 +89,7 @@
     <!-- header & sidebars section -->
     <header>
         <div class="sidebar">
-            <div class="site-logo">aeris</div>
+            <div class="site-logo">caroll</div>
 			<nav class="site-nav">
 				<ul>
 					<li>
@@ -161,7 +176,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="site-logo">plan:e</div>
+            <div class="site-logo">caroll</div>
         </div>
 		<div class="breadcrumb">
 			<ul class="access">
@@ -560,7 +575,7 @@
 			<div class="clear"></div>
 
             <h3 class="section-title">proses verifikasi</h3>
-			<div class="check-app">
+			<div class="form-default">
 				<!-- group activity / division -->
 				<span class="check-activity-group">
 					Ini hak si ini
