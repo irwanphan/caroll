@@ -1,0 +1,60 @@
+160309
+------
+irwanphan
+
+index.html [c]
+- created sidebar menu, list of icons show with off-canvas hovering transition
+- created topbar for title, user menu, and right panel toggler
+- created breadcrumb section
+- created content area as .content-wrapper
+- created off-canvas right panel
+	- right panel consists of notifications area & notes
+	- user menu hidden on overflow, show on hovering
+- integrated dynatable.js from dynatable.com
+- created samples of tables(dynatable), side menu, form, and check-list
+
+main sass, main css [c]
+- .form-default class used to define form styles
+- .check-app class used to define check-list styles
+
+normalize.css [+]
+
+overwrite css [c]
+- meant to be used by user for overriding existing styles
+
+jquery.dynatable.css, jquery.dynatable.js, jquery-1.7.2.min.js [+]
+- enabling the usage of dynatable lybrary
+
+------
+160317
+------
+irwanphan
+
+login.html [c]
+
+main.sass [u]
+- set breadcrumb in smaller size
+
+------
+160328
+------
+irwanphan
+
+index.html [u]
+- integrated tatami.css
+- added .section titles to clear the demo section
+- created samples of push notifications, popup, and usage of tatami.css
+
+tatami.css [+]
+- still in ongoing development/beta version
+
+------
+160328
+------
+irwanphan
+
+index.html
+- applied sample breakpoints classes
+- added .close .round-button on .popup
+tatami.css [u]
+- updated breakpoints

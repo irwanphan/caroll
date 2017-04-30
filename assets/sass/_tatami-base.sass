@@ -1,0 +1,64 @@
+/*
+ * sass code: tatami
+ * crafted by 2016 IrwanPhan
+ * thanks for the insight from Luke Harrison http://www.lukeharrison.net
+ * 
+ * fork at https://github.com/irwanphan/tatami
+ * Date: Fri Mar 18 2016
+ */ 
+
+// define the container's width
+$width: 1140px
+// define the gutter's width
+$gutter: 30px
+// define the number of columns
+$columns: 12
+// define the left & right padding scale to gutter, default 0.5
+$padding-scale: .5
+// responsive setting
+$responsive: true
+
+// padding left & right (as half a gutter, 0.5 * gutter)
+$padding: $padding-scale * $gutter
+// calculate the column width
+$column-width: ($width - ($gutter * ($columns - 1))) / $columns
+
+// set base container
+@mixin container($container-width: $width)
+	// set container width if responsive, else if not
+	@if $responsive == true
+		max-width: $container-width
+	@else
+		width: $container-width
+	margin: 0px auto
+
+// row comes before columns, familiarity with zurb
+@mixin row($row-width: 100%)
+	width: $row-width
+	display: table
+
+@mixin addcol($i)
+	// calculate the grid's width
+	$col: ($column-width * $i) + ($gutter * ($i - 1))
+	// calculate responsive grid's width, and if not
+	@if $responsive == true
+		$col: ($col / $width) * 100%
+		// gutter's percentage for responsive view
+		$gutter-percentage: ($gutter / $width) * 100%
+		width: $col
+		float: left
+		margin-right: $gutter-percentage
+	@else
+		$col: $col
+		width: $col
+		float: left
+		margin-right: $gutter
+	&:last-child
+		margin-right: 0
+
+@mixin breakpoints($media-name, $media-min-width)
+	@if $responsive == true
+		@media screen and (min-width: $media-min-width)
+			@for $x from 1 to $columns
+				.#{$media-name}-#{$x}
+					@include addcol($x)

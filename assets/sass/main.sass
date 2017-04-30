@@ -1,0 +1,503 @@
+/*
+ * admin page template
+ * code project: caroll
+ * crafted(c) 2016 IrwanPhan
+ *
+ * http://www.orangeguild.us
+ * Date: Wed Mar 09 2016
+ */ 
+
+// not a superman tonight
+// @import "tatami-base"
+// @import "tatami-breakpoints"
+
+// colors
+$white: #fff
+$white-min: #eaeaea
+$grey-light: #dedede
+$grey: #888
+$orange: #da5f00
+$green: #11b300
+$blue: #466ab2
+$red: #fb525a
+
+$theme-color: $orange
+$complementer-color: $green
+
+$sidebar-bg-color: $theme-color
+$sidebar-logo-bg-color: darken($theme-color,5%)
+$sidebar-icon-bg-color: darken($theme-color,10%)
+$sidebar-text-color: lighten($theme-color,36%)
+$sidebar-subtext-color: lighten($theme-color,18%)
+
+$topbar-left-padding-default: 68px
+$topbar-left-padding-opened: 300px
+
+$topbar-logo-color: $complementer-color
+$topbar-bg-color: rgba(250,250,250,0.88)
+
+$panel-bg-color: lighten($theme-color,55%)
+$panel-header-bg-color: $theme-color
+$panel-text-color: lighten($theme-color,36%)
+
+$breadcrumb-bg-color: lighten($grey-light,5%)
+$breadcrumb-text-color: $grey
+
+$table-header-bg-color: $grey-light
+$table-border-color: $grey-light
+
+// alchemy
+$browsers: '', '-o-', '-ms-', '-moz-', '-webkit-'
+@mixin transitions ($sec)
+	@each $browser in $browsers
+		#{$browser}transition: all $sec ease
+@mixin borderradius ($radius: 50%)
+	@each $browser in $browsers
+		#{$browser}border-radius: $radius
+@mixin custombutton ($bgcolor: $grey, $hover-bgcolor: $theme-color, $color: $white, $line-height: 50px, $border: 0)
+	background-color: $bgcolor
+	color: $color
+	line-height: $line-height
+	border: $border
+	&:hover, &:focus, &:active
+		background-color: $hover-bgcolor
+		color: $color
+		text-decoration: none
+@mixin buttonsicon ($content, $margin: 6px, $font-size: inherit, $color: inherit)
+	&:before
+		font-family: "FontAwesome"
+		content: $content
+		margin-right: $margin
+		color: $color
+		font-size: $font-size
+@mixin squareicon ($size)
+	width: $size
+	height: $size
+	line-height: $size
+	text-align: center
+@mixin valigncenter ($height)
+	height: $height
+	line-height: $height
+@mixin clearfix
+	content: ""
+	display: block
+	clear: both
+
+// default styling
+*, *:before, *:after
+	box-sizing: border-box
+html, body
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+	font-family: "segoe UI", "open sans", arial, sans-serif
+a
+	text-decoration: none
+	color: inherit
+	&:hover, &:active, &:focus, &:visited
+		color: inherit
+	&.round-button
+		@include borderradius(50%)
+		display: block
+		background-color: $white-min
+ul
+	list-style: none
+	padding-left: 0
+ul, li, a, input, input ~ label, button
+	@include transitions(.3s)
+input[type="radio"], input[type="checkbox"], a
+	cursor: pointer
+	& ~ label
+		cursor: pointer
+.hidden
+	visibility: hidden
+	display: none
+.clear
+	@include clearfix
+.right
+	float: right
+.container-fluid
+	width: 100%
+
+// show me the money
+body
+	margin: 0
+	padding: 0
+	color: #2e2e2e
+	background-color: #f8f8f8
+	.section-title
+		text-transform: uppercase
+		display: block
+		width: 100%
+	// left sidebar toggler
+	#sidebar-toggler
+		display: none
+		&:checked
+			& ~ label
+				color: $white
+				padding-left: + 256px
+			& ~ header .sidebar
+				left: 0
+			// if the toggler slide the .wrapper-content as well
+			// & ~ .content-wrapper
+			// 	margin-left: $topbar-left-padding-opened
+			// 	padding-left: 0
+			// & ~ header .breadcrumb
+			// 	padding-left: 0
+			// 	margin-left: $topbar-left-padding-opened
+	label[for="sidebar-toggler"]
+		color: $sidebar-text-color
+		position: fixed
+		z-index: 8
+		font-size: 28px
+		padding: 12px 12px 12px 22px
+		&:hover
+			color: $white
+	header
+		z-index: 6
+		.site-logo
+			padding: 12px
+			font-size: 28px
+			font-weight: bold
+			width: auto
+		// topbar section
+		.topbar
+			padding-left: $topbar-left-padding-default
+			position: fixed
+			width: 100%
+			background-color: $topbar-bg-color
+			z-index: 3
+			.site-logo
+				color: $topbar-logo-color
+				display: inline-block
+			// login user avatar and menu
+			.user-nav
+				padding: 4px
+				width: auto
+				display: inline-block
+				text-align: right
+				position: fixed
+				top: 0
+				right: 0
+				.user-online
+					padding: 8px 12px
+					margin-right: 77px
+					right: 80px
+					height: 50px
+					overflow: hidden
+					display: block
+					@include borderradius(10%)
+					@include transitions(.3s)
+					&:hover
+						height: auto
+						overflow: visible
+						background-color: lighten($theme-color,40%)
+					hr
+						border-top: 1px solid $theme-color
+						border-bottom: 0
+					li:hover a
+						color: $theme-color
+					.user-name
+						float: left
+						line-height: 36px
+						margin-right: 6px
+						display: inline-block
+					.user-avatar
+						display: inline-block
+						overflow: hidden
+						@include squareicon(36px)
+						@include borderradius(50%)
+						img
+							width: 100%
+			// right panel toggler button
+			#panel-right
+				display: none
+			label[for="panel-right"]
+				position: absolute
+			.panel-open
+				@include squareicon(36px)
+				@include borderradius(50%)
+				background-color: $grey-light
+				display: block
+				right: 42px
+				top: 12px
+				&:hover
+					background-color: lighten($theme-color,36%)
+					color: $theme-color
+			#panel-right:checked ~ .panel-right
+				right: 0
+				box-shadow: -2px 0 8px 0 $grey-light
+			// right panel // off-canvas
+			.panel-right
+				@include transitions(.3s)
+				position: fixed
+				top: 0
+				bottom: 0
+				right: -300px
+				width: 300px
+				text-align: center
+				background-color: $panel-header-bg-color
+				.panel-close
+					color: $panel-text-color
+					right: 12px
+					top: 14px
+					&:hover
+						color: $white
+				input[type="radio"]
+					display: none
+				.panel-menu
+					text-transform: capitalize
+					color: $panel-text-color
+					height: 50px
+					line-height: 50px
+					right: 0
+					top: 0
+					margin: 0 12px
+					&:hover
+						color: $white
+				.panel-container div
+					background-color: $panel-bg-color
+					position: absolute
+					width: 100%
+					top: 50px
+					bottom: 50px
+					right: -300px
+				input#op-1:checked
+					&~ label[for="op-1"]
+						color: $white-min
+					&~ .panel-container .panel-1
+						right: 0
+				input#op-2:checked
+					&~ label[for="op-2"]
+						color: $white-min
+					&~ .panel-container .panel-2
+						right: 0
+		// topbar-breadcrumb section
+		.breadcrumb
+			padding-left: $topbar-left-padding-default
+			margin-left: 0
+			height: 36px
+			background-color: $breadcrumb-bg-color
+			width: 100%
+			position: fixed
+			top: 62px
+			z-index: 2
+			@include transitions(.3s)
+			ul.access
+				margin: 0
+				padding-left: 12px
+				display: inline-block
+				li
+					@include valigncenter(36px)
+					margin-right: 8px
+					width: auto
+					display: inline-block
+					text-transform: uppercase
+					font-weight: bold
+					color: $breadcrumb-text-color
+					&:hover
+						color: $blue
+					&:after
+						margin-left: 12px
+						font-family: FontAwesome
+						content: "\f105"
+					&:last-child:after
+						content: " "
+		// left sidebar section
+		.sidebar
+			position: fixed
+			color: $sidebar-text-color
+			background-color: $sidebar-bg-color
+			width: 300px
+			left: -232px
+			top: 0
+			bottom: 0
+			z-index: 7
+			@include transitions(.3s)
+			// these 2 lines > sidebar displayed by hovering
+			// &:hover
+			// 	left: 0
+			.site-logo
+				color: $white
+				padding-left: 30px
+				background-color: $sidebar-logo-bg-color
+			.site-nav
+				padding: 12px 12px 12px 30px
+				li
+					text-transform: capitalize
+					height: 50px
+					a
+						display: block
+					.detail
+						display: block
+						width: auto
+						font-size: 12px
+						color: $sidebar-subtext-color
+					.menu-icon
+						@extend .right
+						font-weight: bold
+						background-color: $sidebar-icon-bg-color
+						@include squareicon(40px)
+					&:hover
+						color: $white
+						.detail
+							color: $sidebar-text-color
+
+	.content-wrapper
+		padding: 96px 0 0 68px
+		width: 100%
+		margin-left: 0
+		@include transitions(.3s)
+		.content-container-fluid
+			overflow-y: auto
+			padding: 12px
+			// table using jquery.dynatable
+			table
+				width: 100%
+				margin: 12px 0
+				th
+					background-color: $table-header-bg-color
+				th, td
+					padding: 6px
+				td
+					border-bottom: 1px solid $table-border-color
+				p
+					margin: 0
+	// form
+	.form-default
+		fieldset
+			width: 100%
+			display: block
+			border: 0
+		label
+			display: inline-block
+			vertical-align: top
+			text-transform: capitalize
+		select, input[type="text"], input[type="password"], textarea
+			border: 1px solid darken($grey-light, 10%)
+			padding: 6px
+			&:hover, &:active, &:focus
+				border-color: $green
+		textarea
+			resize: none
+			height: 108px
+		select
+			cursor: pointer
+		input[type="submit"]
+			display: inline-block
+			height: 36px
+			border: 0
+			background-color: $grey-light
+			&:hover
+				background-color: lighten($theme-color,36%)
+				color: $theme-color
+	.check-app
+		padding: 12px
+		.check-activity-group
+			text-transform: uppercase
+			font-weight: bold
+			color: $grey
+		.check-list
+			li
+				margin-bottom: 8px
+				&:hover .check-ok
+					color: $green
+					background-color: lighten($green,36%)
+			input[type="checkbox"]
+				@extend .hidden
+				&:checked ~ label .check-ok
+					color: $green
+					background-color: lighten($green,36%)
+					&:before
+						content: "Ok"
+			.check-ok
+				@include squareicon(40px)
+				@include transitions(.2s)
+				font-weight: bold
+				color: $grey
+				background-color: $grey-light
+				display: inline-block
+				margin-right: 8px
+				&:before
+					content: "..."
+		.check-button
+			display: inline-block
+			margin-bottom: 16px
+			border: 0
+			height: 40px
+			padding: 8px 24px
+			background-color: $grey-light
+			&:hover
+				background-color: lighten($theme-color,36%)
+				color: $theme-color
+		.check-log
+			width: 100%
+			.log
+				display: block
+				padding: 8px
+				margin-bottom: 8px
+				&.log-ok
+					background-color: lighten($green,42%)
+				&.log-cancel
+					background-color: lighten($red,12%)
+				&.log-info
+					background-color: $grey-light
+
+	// popup stuff
+	.push-notification
+		position: fixed
+		bottom: 0
+		right: 0
+		margin: 16px
+		padding: 16px
+		display: block
+		background-color: $white
+		box-shadow: 0 0 8px 0 $grey-light
+		max-width: 20%
+		ul
+			margin: 0
+		li
+			display: block
+			@include borderradius(5px)
+			border-bottom: 1px solid $table-border-color
+			padding: 8px
+			&:last-child
+				border-bottom: 0
+			&:hover
+				background-color: lighten($theme-color, 50%)
+	.popup
+		position: fixed
+		background-color: rgba(0,0,0,0.5)
+		z-index: 88
+		top: 0
+		bottom: 0
+		width: 100%
+		overflow-y: auto
+		.popup-panel
+			position: relative
+			background-color: $white-min
+			box-shadow: 0 0 8px 0 $grey-light
+			padding: 32px
+			margin: 60px auto
+			.close
+				@include squareicon(40px)
+				position: absolute
+				top: -16px
+				right: -16px
+				border: 4px solid $grey
+				i
+					display: block
+					height: 30px
+					line-height: 30px
+				&:hover
+					background-color: lighten($theme-color,36%)
+					color: $theme-color
+					border-color: $theme-color
+
+	// login page
+	.login-wrapper
+		.login-layer
+			// width: 640px
+			background-color: lighten($theme-color, 40%)
+			position: fixed
+			top: 120px
+			form
+				padding: 32px

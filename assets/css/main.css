@@ -1,0 +1,467 @@
+@charset "UTF-8";
+/* admin page template
+ * code project: caroll
+ * crafted(c) 2016 IrwanPhan
+ *
+ * http://www.orangeguild.us
+ * Date: Wed Mar 09 2016
+ */
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+html, body {
+  -webkit-tap-highlight-color: transparent;
+  font-family: "segoe UI", "open sans", arial, sans-serif; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+  a:hover, a:active, a:focus, a:visited {
+    color: inherit; }
+  a.round-button {
+    border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    display: block;
+    background-color: #eaeaea; }
+
+ul {
+  list-style: none;
+  padding-left: 0; }
+
+ul, li, a, input, input ~ label, button {
+  transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease; }
+
+input[type="radio"], input[type="checkbox"], a {
+  cursor: pointer; }
+  input[type="radio"] ~ label, input[type="checkbox"] ~ label, a ~ label {
+    cursor: pointer; }
+
+.hidden, body .check-app .check-list input[type="checkbox"] {
+  visibility: hidden;
+  display: none; }
+
+.clear {
+  content: "";
+  display: block;
+  clear: both; }
+
+.right, body header .sidebar .site-nav li .menu-icon {
+  float: right; }
+
+.container-fluid {
+  width: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #2e2e2e;
+  background-color: #f8f8f8; }
+  body .section-title {
+    text-transform: uppercase;
+    display: block;
+    width: 100%; }
+  body #sidebar-toggler {
+    display: none; }
+    body #sidebar-toggler:checked ~ label {
+      color: #fff;
+      padding-left: 256px; }
+    body #sidebar-toggler:checked ~ header .sidebar {
+      left: 0; }
+  body label[for="sidebar-toggler"] {
+    color: #ffc293;
+    position: fixed;
+    z-index: 8;
+    font-size: 28px;
+    padding: 12px 12px 12px 22px; }
+    body label[for="sidebar-toggler"]:hover {
+      color: #fff; }
+  body header {
+    z-index: 6; }
+    body header .site-logo {
+      padding: 12px;
+      font-size: 28px;
+      font-weight: bold;
+      width: auto; }
+    body header .topbar {
+      padding-left: 68px;
+      position: fixed;
+      width: 100%;
+      background-color: rgba(250, 250, 250, 0.88);
+      z-index: 3; }
+      body header .topbar .site-logo {
+        color: #11b300;
+        display: inline-block; }
+      body header .topbar .user-nav {
+        padding: 4px;
+        width: auto;
+        display: inline-block;
+        text-align: right;
+        position: fixed;
+        top: 0;
+        right: 0; }
+        body header .topbar .user-nav .user-online {
+          padding: 8px 12px;
+          margin-right: 77px;
+          right: 80px;
+          height: 50px;
+          overflow: hidden;
+          display: block;
+          border-radius: 10%;
+          -o-border-radius: 10%;
+          -ms-border-radius: 10%;
+          -moz-border-radius: 10%;
+          -webkit-border-radius: 10%;
+          transition: all 0.3s ease;
+          -o-transition: all 0.3s ease;
+          -ms-transition: all 0.3s ease;
+          -moz-transition: all 0.3s ease;
+          -webkit-transition: all 0.3s ease; }
+          body header .topbar .user-nav .user-online:hover {
+            height: auto;
+            overflow: visible;
+            background-color: #ffcda7; }
+          body header .topbar .user-nav .user-online hr {
+            border-top: 1px solid #da5f00;
+            border-bottom: 0; }
+          body header .topbar .user-nav .user-online li:hover a {
+            color: #da5f00; }
+          body header .topbar .user-nav .user-online .user-name {
+            float: left;
+            line-height: 36px;
+            margin-right: 6px;
+            display: inline-block; }
+          body header .topbar .user-nav .user-online .user-avatar {
+            display: inline-block;
+            overflow: hidden;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            border-radius: 50%;
+            -o-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%; }
+            body header .topbar .user-nav .user-online .user-avatar img {
+              width: 100%; }
+      body header .topbar #panel-right {
+        display: none; }
+      body header .topbar label[for="panel-right"] {
+        position: absolute; }
+      body header .topbar .panel-open {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        border-radius: 50%;
+        -o-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background-color: #dedede;
+        display: block;
+        right: 42px;
+        top: 12px; }
+        body header .topbar .panel-open:hover {
+          background-color: #ffc293;
+          color: #da5f00; }
+      body header .topbar #panel-right:checked ~ .panel-right {
+        right: 0;
+        box-shadow: -2px 0 8px 0 #dedede; }
+      body header .topbar .panel-right {
+        transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: -300px;
+        width: 300px;
+        text-align: center;
+        background-color: #da5f00; }
+        body header .topbar .panel-right .panel-close {
+          color: #ffc293;
+          right: 12px;
+          top: 14px; }
+          body header .topbar .panel-right .panel-close:hover {
+            color: #fff; }
+        body header .topbar .panel-right input[type="radio"] {
+          display: none; }
+        body header .topbar .panel-right .panel-menu {
+          text-transform: capitalize;
+          color: #ffc293;
+          height: 50px;
+          line-height: 50px;
+          right: 0;
+          top: 0;
+          margin: 0 12px; }
+          body header .topbar .panel-right .panel-menu:hover {
+            color: #fff; }
+        body header .topbar .panel-right .panel-container div {
+          background-color: #fff9f4;
+          position: absolute;
+          width: 100%;
+          top: 50px;
+          bottom: 50px;
+          right: -300px; }
+        body header .topbar .panel-right input#op-1:checked ~ label[for="op-1"] {
+          color: #eaeaea; }
+        body header .topbar .panel-right input#op-1:checked ~ .panel-container .panel-1 {
+          right: 0; }
+        body header .topbar .panel-right input#op-2:checked ~ label[for="op-2"] {
+          color: #eaeaea; }
+        body header .topbar .panel-right input#op-2:checked ~ .panel-container .panel-2 {
+          right: 0; }
+    body header .breadcrumb {
+      padding-left: 68px;
+      margin-left: 0;
+      height: 36px;
+      background-color: #ebebeb;
+      width: 100%;
+      position: fixed;
+      top: 62px;
+      z-index: 2;
+      transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease; }
+      body header .breadcrumb ul.access {
+        margin: 0;
+        padding-left: 12px;
+        display: inline-block; }
+        body header .breadcrumb ul.access li {
+          height: 36px;
+          line-height: 36px;
+          margin-right: 8px;
+          width: auto;
+          display: inline-block;
+          text-transform: uppercase;
+          font-weight: bold;
+          color: #888; }
+          body header .breadcrumb ul.access li:hover {
+            color: #466ab2; }
+          body header .breadcrumb ul.access li:after {
+            margin-left: 12px;
+            font-family: FontAwesome;
+            content: ""; }
+          body header .breadcrumb ul.access li:last-child:after {
+            content: " "; }
+    body header .sidebar {
+      position: fixed;
+      color: #ffc293;
+      background-color: #da5f00;
+      width: 300px;
+      left: -232px;
+      top: 0;
+      bottom: 0;
+      z-index: 7;
+      transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease; }
+      body header .sidebar .site-logo {
+        color: #fff;
+        padding-left: 30px;
+        background-color: #c15400; }
+      body header .sidebar .site-nav {
+        padding: 12px 12px 12px 30px; }
+        body header .sidebar .site-nav li {
+          text-transform: capitalize;
+          height: 50px; }
+          body header .sidebar .site-nav li a {
+            display: block; }
+          body header .sidebar .site-nav li .detail {
+            display: block;
+            width: auto;
+            font-size: 12px;
+            color: #ff8e37; }
+          body header .sidebar .site-nav li .menu-icon {
+            font-weight: bold;
+            background-color: #a74900;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center; }
+          body header .sidebar .site-nav li:hover {
+            color: #fff; }
+            body header .sidebar .site-nav li:hover .detail {
+              color: #ffc293; }
+  body .content-wrapper {
+    padding: 96px 0 0 68px;
+    width: 100%;
+    margin-left: 0;
+    transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease; }
+    body .content-wrapper .content-container-fluid {
+      overflow-y: auto;
+      padding: 12px; }
+      body .content-wrapper .content-container-fluid table {
+        width: 100%;
+        margin: 12px 0; }
+        body .content-wrapper .content-container-fluid table th {
+          background-color: #dedede; }
+        body .content-wrapper .content-container-fluid table th, body .content-wrapper .content-container-fluid table td {
+          padding: 6px; }
+        body .content-wrapper .content-container-fluid table td {
+          border-bottom: 1px solid #dedede; }
+        body .content-wrapper .content-container-fluid table p {
+          margin: 0; }
+  body .form-default fieldset {
+    width: 100%;
+    display: block;
+    border: 0; }
+  body .form-default label {
+    display: inline-block;
+    vertical-align: top;
+    text-transform: capitalize; }
+  body .form-default select, body .form-default input[type="text"], body .form-default input[type="password"], body .form-default textarea {
+    border: 1px solid #c5c5c5;
+    padding: 6px; }
+    body .form-default select:hover, body .form-default select:active, body .form-default select:focus, body .form-default input[type="text"]:hover, body .form-default input[type="text"]:active, body .form-default input[type="text"]:focus, body .form-default input[type="password"]:hover, body .form-default input[type="password"]:active, body .form-default input[type="password"]:focus, body .form-default textarea:hover, body .form-default textarea:active, body .form-default textarea:focus {
+      border-color: #11b300; }
+  body .form-default textarea {
+    resize: none;
+    height: 108px; }
+  body .form-default select {
+    cursor: pointer; }
+  body .form-default input[type="submit"] {
+    display: inline-block;
+    height: 36px;
+    border: 0;
+    background-color: #dedede; }
+    body .form-default input[type="submit"]:hover {
+      background-color: #ffc293;
+      color: #da5f00; }
+  body .check-app {
+    padding: 12px; }
+    body .check-app .check-activity-group {
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #888; }
+    body .check-app .check-list li {
+      margin-bottom: 8px; }
+      body .check-app .check-list li:hover .check-ok {
+        color: #11b300;
+        background-color: #7aff6c; }
+    body .check-app .check-list input[type="checkbox"]:checked ~ label .check-ok {
+      color: #11b300;
+      background-color: #7aff6c; }
+      body .check-app .check-list input[type="checkbox"]:checked ~ label .check-ok:before {
+        content: "Ok"; }
+    body .check-app .check-list .check-ok {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      -ms-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -webkit-transition: all 0.2s ease;
+      font-weight: bold;
+      color: #888;
+      background-color: #dedede;
+      display: inline-block;
+      margin-right: 8px; }
+      body .check-app .check-list .check-ok:before {
+        content: "..."; }
+    body .check-app .check-button {
+      display: inline-block;
+      margin-bottom: 16px;
+      border: 0;
+      height: 40px;
+      padding: 8px 24px;
+      background-color: #dedede; }
+      body .check-app .check-button:hover {
+        background-color: #ffc293;
+        color: #da5f00; }
+    body .check-app .check-log {
+      width: 100%; }
+      body .check-app .check-log .log {
+        display: block;
+        padding: 8px;
+        margin-bottom: 8px; }
+        body .check-app .check-log .log.log-ok {
+          background-color: #95ff8a; }
+        body .check-app .check-log .log.log-cancel {
+          background-color: #fc8e93; }
+        body .check-app .check-log .log.log-info {
+          background-color: #dedede; }
+  body .push-notification {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 16px;
+    padding: 16px;
+    display: block;
+    background-color: #fff;
+    box-shadow: 0 0 8px 0 #dedede;
+    max-width: 20%; }
+    body .push-notification ul {
+      margin: 0; }
+    body .push-notification li {
+      display: block;
+      border-radius: 5px;
+      -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-bottom: 1px solid #dedede;
+      padding: 8px; }
+      body .push-notification li:last-child {
+        border-bottom: 0; }
+      body .push-notification li:hover {
+        background-color: #ffeada; }
+  body .popup {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 88;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    overflow-y: auto; }
+    body .popup .popup-panel {
+      position: relative;
+      background-color: #eaeaea;
+      box-shadow: 0 0 8px 0 #dedede;
+      padding: 32px;
+      margin: 60px auto; }
+      body .popup .popup-panel .close {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: absolute;
+        top: -16px;
+        right: -16px;
+        border: 4px solid #888; }
+        body .popup .popup-panel .close i {
+          display: block;
+          height: 30px;
+          line-height: 30px; }
+        body .popup .popup-panel .close:hover {
+          background-color: #ffc293;
+          color: #da5f00;
+          border-color: #da5f00; }
+  body .login-wrapper .login-layer {
+    background-color: #ffcda7;
+    position: fixed;
+    top: 120px; }
+    body .login-wrapper .login-layer form {
+      padding: 32px; }
+
+/*# sourceMappingURL=main.css.map */

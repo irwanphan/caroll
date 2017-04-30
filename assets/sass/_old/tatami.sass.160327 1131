@@ -1,0 +1,71 @@
+/*
+ * grid work
+ * code project: tatami
+ * crafted(c) 2016 IrwanPhan
+ * thanks for the insight from Luke Harrison http://www.lukeharrison.net
+ *
+ * http://www.orangeguild.us
+ * Date: Fri Mar 18 2016
+ */
+@import "tatami-nin"
+
+// define the container's width
+$width: 960px
+// define the gutter's width
+$gutter: 30px
+// define the number of columns
+$columns: 12
+// define the left & right padding scale to gutter, default 0.5
+$padding-scale: .5
+
+// padding left & right (as half a gutter, 0.5 * gutter)
+$padding: $padding-scale * $gutter
+// calculate the column width
+$column-width: ($width - ($gutter * ($columns - 1))) / $columns
+
+// responsive setting
+$responsive: true
+
+// set base container
+// .container
+// 	set container width if responsive, else if not
+// 	@if $responsive == true
+// 		max-width: $width
+// 	@else
+// 		width: $width
+// 	margin: 0px auto
+
+.container
+	@include container()
+
+// row comes before columns, familiarity with zurb
+// .row
+// 	width: 100%
+// 	padding: 0 $padding
+
+.row
+	@include row()
+
+// set grids' width
+@for $i from 1 to $columns
+	// calculate the grid's width
+	$col: ($column-width * $i) + ($gutter * ($i - 1))
+	// calculate responsive grid's width, and if not
+	@if $responsive == true
+		$col: ($col / $width) * 100%
+		// gutter's percentage for responsive view
+		$gutter-percentage: ($gutter / $width) * 100%
+		.col-#{$i}
+			width: $col
+			float: left
+			margin-left: $gutter-percentage
+	@else
+		$col: $col
+		.col-#{$i}
+			width: $col
+			float: left
+			margin-left: $gutter
+
+.clear
+	margin-left: 0px
+	clear: left

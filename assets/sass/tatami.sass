@@ -1,0 +1,27 @@
+@import "tatami-base"
+
+// create container and row in default tatami-base variables
+.container
+	@include container()
+.row
+	@include row()
+
+// sample of default columns without media queries/breakpoints
+// default at 12 columns if tatmi-base is unchanged
+@for $x from 1 to $columns
+	.col-#{$x}
+		@include addcol($x)
+
+// define media query breakpoints
+// sample of default media queries
+$small: 241px
+$medium: 641px
+$large: 1025px
+$extra-large: 1441px
+
+// include mixin like
+// @include breakpoints(name, 999px)
+@include breakpoints(col-sm, $small)
+@include breakpoints(col-md, $medium)
+@include breakpoints(col-lg, $large)
+@include breakpoints(col-xl, $extra-large)
