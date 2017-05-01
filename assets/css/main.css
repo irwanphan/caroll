@@ -94,35 +94,35 @@ input[type="radio"], input[type="checkbox"], a {
   display: block;
   border: 1px solid white; }
   .button.theme {
-    color: #2e2e2e;
-    background-color: #ffa25b; }
+    color: #fff;
+    background-color: #ff770e; }
     .button.theme:hover {
-      color: #eaeaea;
-      background-color: #ff770e; }
+      color: #da5f00;
+      background-color: #ffa25b; }
   .button.orange {
-    color: #2e2e2e;
-    background-color: #ffa25b; }
+    color: #fff;
+    background-color: #ff770e; }
     .button.orange:hover {
-      color: #eaeaea;
-      background-color: #ff770e; }
+      color: #da5f00;
+      background-color: #ffa25b; }
   .button.blue {
-    color: #2e2e2e;
-    background-color: #9eb2d9; }
+    color: #fff;
+    background-color: #6886c3; }
     .button.blue:hover {
-      color: #eaeaea;
-      background-color: #6886c3; }
+      color: #466ab2;
+      background-color: #9eb2d9; }
   .button.green {
-    color: #2e2e2e;
-    background-color: #57ef67; }
+    color: #fff;
+    background-color: #15e52b; }
     .button.green:hover {
-      color: #eaeaea;
-      background-color: #15e52b; }
+      color: #11b622;
+      background-color: #57ef67; }
   .button.red {
-    color: #2e2e2e;
-    background-color: #ec8c8c; }
+    color: #fff;
+    background-color: #e14b4b; }
     .button.red:hover {
-      color: #eaeaea;
-      background-color: #e14b4b; }
+      color: #d62323;
+      background-color: #ec8c8c; }
 
 body {
   margin: 0;
