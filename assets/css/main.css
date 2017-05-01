@@ -1,10 +1,8 @@
 @charset "UTF-8";
 /* admin page template
  * code project: caroll
- * crafted(c) 2016 IrwanPhan
+ * crafted(c) 2016 @IrwanPhan
  *
- * http://www.orangeguild.us
- * Date: Wed Mar 09 2016
  */
 /* sass code: tatami
  * crafted by 2016 IrwanPhan
@@ -96,11 +94,35 @@ input[type="radio"], input[type="checkbox"], a {
   display: block;
   border: 1px solid white; }
   .button.theme {
-    color: #da5f00;
+    color: #2e2e2e;
     background-color: #ffa25b; }
     .button.theme:hover {
-      color: #8d3e00;
-      background-color: #ff8527; }
+      color: #eaeaea;
+      background-color: #ff770e; }
+  .button.orange {
+    color: #2e2e2e;
+    background-color: #ffa25b; }
+    .button.orange:hover {
+      color: #eaeaea;
+      background-color: #ff770e; }
+  .button.blue {
+    color: #2e2e2e;
+    background-color: #9eb2d9; }
+    .button.blue:hover {
+      color: #eaeaea;
+      background-color: #6886c3; }
+  .button.green {
+    color: #2e2e2e;
+    background-color: #57ef67; }
+    .button.green:hover {
+      color: #eaeaea;
+      background-color: #15e52b; }
+  .button.red {
+    color: #2e2e2e;
+    background-color: #ec8c8c; }
+    .button.red:hover {
+      color: #eaeaea;
+      background-color: #e14b4b; }
 
 body {
   margin: 0;
@@ -114,7 +136,6 @@ body {
     display: block;
     font-size: 22px;
     font-weight: bold;
-    padding: 0 0.6125em;
     color: #626262; }
   body #sidebar-toggler {
     display: none; }
@@ -185,7 +206,7 @@ body {
       background-color: rgba(250, 250, 250, 0.88);
       z-index: 3; }
       body header .topbar .site-logo {
-        color: #11b300;
+        color: #11b622;
         display: inline-block; }
       body header .topbar #panel-right {
         display: none; }
@@ -405,7 +426,9 @@ body {
   body .form-default fieldset {
     width: 100%;
     display: block;
-    border: 0; }
+    border: 0;
+    padding: 0;
+    margin-bottom: 12px; }
   body .form-default label {
     display: inline-block;
     vertical-align: top;
@@ -421,21 +444,11 @@ body {
     height: 108px; }
   body .form-default select {
     cursor: pointer; }
-  body .form-default input[type="submit"], body .form-default input[type="reset"], body .form-default button, body .form-default a.button {
+  body .form-default input[type="submit"], body .form-default input[type="reset"], body .form-default button {
     display: inline-block;
     border: 0;
-    background-color: #f36a00;
-    color: #eaeaea;
     height: 36px;
     line-height: 36px; }
-    body .form-default input[type="submit"]:hover, body .form-default input[type="reset"]:hover, body .form-default button:hover, body .form-default a.button:hover {
-      background-color: #ff9c50;
-      color: #da5f00; }
-    body .form-default input[type="submit"].cancel, body .form-default input[type="reset"].cancel, body .form-default button.cancel, body .form-default a.button.cancel {
-      background-color: #626262; }
-      body .form-default input[type="submit"].cancel:hover, body .form-default input[type="reset"].cancel:hover, body .form-default button.cancel:hover, body .form-default a.button.cancel:hover {
-        color: #888;
-        background-color: #c8c8c8; }
   body .form-default input[type="radio"] ~ label .radio {
     width: 40px;
     height: 40px;
@@ -458,9 +471,6 @@ body {
     margin-right: 12px; }
     body .form-default input[type="radio"] ~ label:last-child {
       margin-right: 0; }
-  body .form-default .button {
-    margin: 1px;
-    box-sizing: border-box; }
   body .form-default .check-list li {
     margin-bottom: 8px; }
     body .form-default .check-list li:hover .check-ok {
@@ -498,18 +508,17 @@ body {
     body .form-default .check-button:hover {
       background-color: #ff9c50;
       color: #da5f00; }
-  body .form-default .check-log {
-    width: 100%; }
-    body .form-default .check-log .log {
-      display: block;
-      padding: 8px;
-      margin-bottom: 8px; }
-      body .form-default .check-log .log.log-ok {
-        background-color: #95ff8a; }
-      body .form-default .check-log .log.log-cancel {
-        background-color: #f58c8c; }
-      body .form-default .check-log .log.log-info {
-        background-color: #dedede; }
+  body .log {
+    width: 100%;
+    display: block;
+    padding: 8px;
+    margin-bottom: 8px; }
+    body .log.log-ok {
+      background-color: #57ef67; }
+    body .log.log-cancel {
+      background-color: #ec8c8c; }
+    body .log.log-info {
+      background-color: #dedede; }
   body .push-notification {
     position: fixed;
     bottom: 0;

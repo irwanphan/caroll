@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 
-<!-- /**
- 	Crafted 2016, IrwanPhan
-	Version: 0.7.77
-    CodeProject: Caroll
-    http://orangeguild.us
-**/ -->
-
 <html lang="en"> 
 
 <head>
@@ -63,19 +56,36 @@
             $('#table-app').dataTable({
                 responsive: true
             });
-            $('#table-app-ver').dataTable({
-                responsive: true
-            });
             $('#table-app-fin').dataTable({
                 responsive: true
             });
 
             var datetimepicker_params = {timepicker: false, format: 'Y-m-d'};
 
-            $( '#txt-time_start' ).datetimepicker(datetimepicker_params);
+            $( '#id2' ).datetimepicker(datetimepicker_params);
 
 		});
 	</script>
+
+    <!-- map sample -->
+    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+    <script type='text/javascript'>
+        function init_map(){
+            var myOptions = {
+                zoom:16,center:new google.maps.LatLng(-8.57319335205185,115.28596379255553),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('gmap_canvas'), 
+            myOptions);
+            marker = new google.maps.Marker({
+                map: map,position: new google.maps.LatLng(-8.57319335205185,115.28596379255553)});
+            infowindow = new google.maps.InfoWindow({content:'<strong>Khayangan Villas, Kemenuh</strong><br>Jl. Raya Ir. Sutami Kemenuh Kec. Gianyar Kabupaten Gianyar, Bali, Indonesia<br>-8.5731541,115.2864828<br>'});
+            google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);
+            });
+            infowindow.open(map,marker);
+        }
+        google.maps.event.addDomListener(window, 'load', init_map);
+    </script>
 
 </head>
 
@@ -98,7 +108,7 @@
 								<i class="fa fa-list"></i>
 							</span>
 							<span class="title">daftar aplikasi</span>
-							<span class="detail">77 notifikasi</span>
+							<!-- <span class="detail">77 notifikasi</span> -->
 						</a>
 					</li>
 					<li>
@@ -115,7 +125,7 @@
 								ok
 							</span>
 							<span class="title">aplikasi terverifikasi</span>
-							<span class="detail">7 notifikasi</span>
+							<!-- <span class="detail">7 notifikasi</span> -->
 						</a>
 					</li>
 					<li>
@@ -124,7 +134,7 @@
 								<i class="fa fa-check"></i>
 							</span>
 							<span class="title">aplikasi disetujui</span>
-							<span class="detail">27 notifikasi</span>
+							<!-- <span class="detail">27 notifikasi</span> -->
 						</a>
 					</li>
 					<li>
@@ -133,7 +143,7 @@
 								<i class="fa fa-close"></i>
 							</span>
 							<span class="title">aplikasi ditolak</span>
-							<span class="detail">777 notifikasi</span>
+							<!-- <span class="detail">777 notifikasi</span> -->
 						</a>
 					</li>
 				</ul>
@@ -191,14 +201,14 @@
     <!-- content section -->
 	<div class="content-wrapper">
 		<div class="content-container-fluid">
-            <h3 class="section-title">daftar aplikasi masuk</h3>
+            <span class="section-title">just a table</span>
 			<table id="table-app">
 				<thead>
 					<tr>
-						<th><p>No</p></th>
-						<th><p>Tanggal Masuk</p></th>
-						<th><p>Perizinan</p></th>
-						<th><p>Nama Pemohon</p></th>
+						<th><p>#</p></th>
+						<th><p>Created at</p></th>
+						<th><p>Something</p></th>
+						<th><p>Culprit</p></th>
 						<th><p>Progress</p></th>
 					</tr>
 				</thead>
@@ -211,13 +221,13 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Hura-hura di pantai</p>
+                        	<p>Not a lorem ipsum thing</p>
                         </td>
                         <td>
                         	<p>Anna Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 10:18 <span class="bold">ttd kampret</span></p>
+                        	<p>March 5,2016 10:18 <span class="bold">something happended</span></p>
                         </td>
                 	</tr>
                 	<tr>
@@ -228,13 +238,13 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Nongkroeung di pantai</p>
+                        	<p>Told you not lorem ipsum</p>
                         </td>
                         <td>
                         	<p>Nina Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:18 <span class="bold">verifikasi luas wilayah</span></p>
+                        	<p>March 5,2016 12:18 <span class="bold">verified</span></p>
                         </td>
                     </tr>
 					<tr>
@@ -245,13 +255,13 @@
                         	<p>March 2,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Ngebom Pasar Tepi</p>
+                        	<p>Surveying local market</p>
                         </td>
                         <td>
                         	<p>Anna Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:34 <span class="bold">persetujuan KaBag Pening</span></p>
+                        	<p>March 5,2016 12:34 <span class="bold">approved</span></p>
                         </td>
                 	</tr>
                 	<tr>
@@ -262,13 +272,13 @@
                         	<p>March 2,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Lomba makan lobster di gedung DPR</p>
+                        	<p>Gotta eat lobster</p>
                         </td>
                         <td>
                         	<p>Eddy Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:22 <span class="bold">Cek Kesehatan Jantung</span></p>
+                        	<p>March 5,2016 12:22 <span class="bold">checkup for LDL</span></p>
                         </td>
 	                </tr>
 	                <tr>
@@ -279,7 +289,7 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Tiduran di pantai</p>
+                        	<p>Lorem what?</p>
                         </td>
                         <td>
                         	<p>Hectic Doe</p>
@@ -296,7 +306,7 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Bingung ngapain</p>
+                        	<p>Nope, no more please</p>
                         </td>
                         <td>
                         	<p>Joanna Doe</p>
@@ -309,133 +319,15 @@
 			</table>
 			<div class="clear"></div>
 
-            <h3 class="section-title">daftar aplikasi terverifikasi</h3>
-			<table id="table-app-ver">
-				<thead>
-					<tr>
-						<th><p>No</p></th>
-						<th><p>Tanggal Masuk</p></th>
-						<th><p>Perizinan</p></th>
-						<th><p>Nama Pemohon</p></th>
-						<th><p>Lama Proses</p></th>
-					</tr>
-				</thead>
-			    <tbody>
-                	<tr>
-                        <td>
-                         	<p>1</p>
-                        </td>
-                        <td>
-                        	<p>March 1,2016 10:18</p>
-                        </td>
-                        <td>
-                        	<p>Hura-hura di pantai</p>
-                        </td>
-                        <td>
-                        	<p>Anna Doe</p>
-                        </td>
-                        <td>
-                        	<p>5 hari 22 jam</p>
-                        </td>
-                	</tr>
-                	<tr>
-                        <td>
-                        	<p>2</p>
-                        </td>
-                        <td>
-                        	<p>March 1,2016 10:18</p>
-                        </td>
-                        <td>
-                        	<p>Nongkroeung di pantai</p>
-                        </td>
-                        <td>
-                        	<p>Nina Doe</p>
-                        </td>
-                        <td>
-                        	<p>2 hari 2 jam</span></p>
-                        </td>
-                	</tr>
-                	<tr>
-                        <td>
-                        	<p>3</p>
-                        </td>
-                        <td>
-                        	<p>March 2,2016 10:18</p>
-                        </td>
-                        <td>
-                        	<p>Ngebom Pasar Tepi</p>
-                        </td>
-                        <td>
-                        	<p>Anna Doe</p>
-                        </td>
-                        <td>
-                        	<p>3 hari 23 jam</p>
-                        </td>
-                	</tr>
-                	<tr>
-                        <td>
-                        	<p>4</p>
-                        </td>
-                        <td>
-                        	<p>March 2,2016 10:18</p>
-                        </td>
-                        <td>
-                        	<p>Lomba makan lobster di gedung DPR</p>
-                        </td>
-                        <td>
-                        	<p>Eddy Doe</p>
-                        </td>
-                        <td>
-                        	<p>3 hari</p>
-                        </td>
-	                </tr>
-	                <tr>
-                        <td>
-                        	<p>5</p>
-                        </td>
-                        <td>
-                        	<p>March 1,2016 10:18</p>
-                        </td>
-                        <td>
-                        	<p>Tiduran di pantai</p>
-                        </td>
-                        <td>
-                        	<p>Hectic Doe</p>
-                        </td>
-                        <td>
-                        	<p>3 hari 2 jam</p>
-                        </td>
-                	</tr>
-                	<tr>
-                        <td>
-                        	<p>6</p>
-                        </td>
-                        <td>
-                        	<p>March 1,2016 10:18</p>
-                        </td>
-                        <td>
-                        	<p>Bingung ngapain</p>
-                        </td>
-                        <td>
-                        	<p>Joanna Doe</p>
-                        </td>
-                        <td>
-                        	<p>12 hari 12 jam</p>
-                        </td>
-                	</tr>
-                </tbody>
-			</table>
-			<div class="clear"></div>
-
-            <h3 class="section-title">daftar aplikasi yang siap di-handout</h3>
+            <span class="section-title">just another table</span>
 			<table id="table-app-fin">
 				<thead>
                 	<tr>
-                    	<th><p>No</p></th>
-                    	<th><p>Tanggal Masuk</p></th>
-                    	<th><p>Perizinan</p></th>
-                    	<th><p>Nama Pemohon</p></th>
-                  		<th><p>Tanggal Selesai, Status</p></th>
+                    	<th><p>#</p></th>
+                    	<th><p>Created at</p></th>
+                    	<th><p>Just because</p></th>
+                    	<th><p>Who</p></th>
+                  		<th><p>Status</p></th>
                   	</tr>
                 </thead>
                 <tbody>
@@ -447,13 +339,13 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Hura-hura di pantai</p>
+                        	<p>I see some autotext</p>
                         </td>
                         <td>
                         	<p>Anna Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 10:18 <span class="bold text-success">disetujui</span></p>
+                        	<p>March 5,2016 10:18 <span class="bold text-success">approved</span></p>
                         </td>
                 	</tr>
                 	<tr>
@@ -464,13 +356,13 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Nongkroeung di pantai</p>
+                        	<p>Some bikers ride like superhero</p>
                         </td>
                         <td>
                         	<p>Nina Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:18 <span class="bold text-success">disetujui</span></p>
+                        	<p>March 5,2016 12:18 <span class="bold text-success">kicking bucket</span></p>
                         </td>
                 	</tr>
                 	<tr>
@@ -481,13 +373,13 @@
                         	<p>March 2,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Ngebom Pasar Tepi</p>
+                        	<p>We need rainmaker</p>
                         </td>
                         <td>
                         	<p>Anna Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:34 <span class="bold text-danger">ditolak</span></p>
+                        	<p>March 5,2016 12:34 <span class="bold text-danger">denied</span></p>
                         </td>
                 	</tr>
                 	<tr>
@@ -498,13 +390,13 @@
                         	<p>March 2,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Lomba makan lobster di gedung DPR</p>
+                        	<p>Lorem ipsum dolor...please</p>
                         </td>
                         <td>
                         	<p>Eddy Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:22 <span class="bold text-success">disetujui</span></p>
+                        	<p>March 5,2016 12:22 <span class="bold text-success">approved</span></p>
                         </td>
 	                </tr>
 	                <tr>
@@ -515,13 +407,13 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Tiduran di pantai</p>
+                        	<p>Kudo to flower sender</p>
                         </td>
                         <td>
                         	<p>Hectic Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:22 <span class="bold text-success">disetujui</span></p>
+                        	<p>March 5,2016 12:22 <span class="bold text-success">approved</span></p>
                         </td>
                 	</tr>
                 	<tr>
@@ -532,62 +424,57 @@
                         	<p>March 1,2016 10:18</p>
                         </td>
                         <td>
-                        	<p>Bingung ngapain</p>
+                        	<p>No more please</p>
                         </td>
                         <td>
                         	<p>Joanna Doe</p>
                         </td>
                         <td>
-                        	<p>March 5,2016 12:22 <span class="bold text-danger">ditolak</span></p>
+                        	<p>March 5,2016 12:22 <span class="bold text-danger">well..</span></p>
                         </td>
                 	</tr>
                 </tbody>
 			</table>
 			<div class="clear"></div>
 
-            <h3 class="section-title">aplikasi baru</h3>
+            <span class="section-title">you see a form</span>
 			<form class="form-default">
 				<fieldset>
-					<label for="id1" class="col-2">jenis perizinan</label>
+					<label for="id1" class="col-2">label</label>
 					<select id="id1">
 						<option value="x">just</option>
-						<option value="y">fooling</option>
-						<option value="z">around</option>
+						<option value="y">another</option>
+						<option value="z">template</option>
 					</select>
 				</fieldset>
 				<fieldset>
-					<label for="id2" class="col-2">nama pemohon</label>
-					<input id="id2" type="text" placeholder"masukkan nama pemohon">
+					<label for="id2" class="col-2">date here</label>
+					<input id="id2" type="text" class="col-2" placeholder="pick a date">
 				</fieldset>
 				<fieldset>
-					<label for="id3" class="col-2">no KTP pemohon</label>
-					<input id="id3" type="text" placeholder"masukkan nomor KTP pemohon">
+					<label for="id3" class="col-2">text here</label>
+					<input id="id3" type="text" class="col-6" placeholder="write something">
 				</fieldset>
 				<fieldset>
-					<label for="id4" class="col-2">alamat pemohon</label>
-					<textarea id="id4" placeholder"masukkan alamat pemohon"></textarea>
+					<label for="id4" class="col-2">some text area</label>
+					<textarea id="id4" class="col-6" placeholder="write longer stuff"></textarea>
 				</fieldset>
 				<fieldset>
 					<label></label>
-					<input type="submit" value="Simpan">
+					<input type="submit" class="col-8 button blue" value="Save">
 				</fieldset>
 			</form>
 			<div class="clear"></div>
 
-            <h3 class="section-title">proses verifikasi</h3>
-			<div class="form-default">
-				<!-- group activity / division -->
-				<span class="check-activity-group">
-					Ini hak si ini
-				</span>
+            <span class="section-title">checkbox styling using css only</span>
+			<form class="form-default">
 				<ul class="check-list">
 					<li>
 						<input type="checkbox" id="check-number-1">
 						<label for="check-number-1">
 							<span class="check-ok"></span>
 							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 1
+								This is option one
 							</span>
 						</label>
 					</li>
@@ -596,8 +483,7 @@
 						<label for="check-number-2">
 							<span class="check-ok"></span>
 							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 2
+								This is option two
 							</span>
 						</label>
 					</li>
@@ -606,8 +492,7 @@
 						<label for="check-number-3">
 							<span class="check-ok"></span>
 							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 3
+								More option
 							</span>
 						</label>
 					</li>
@@ -616,88 +501,44 @@
 						<label for="check-number-4">
 							<span class="check-ok"></span>
 							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 4
-							</span>
-						</label>
-					</li>
-				</ul>
-				<!-- group activity / division -->
-				<span class="check-activity-group">
-					Ini hak si itu
-				</span>
-				<ul class="check-list">
-					<li>
-						<input type="checkbox" id="check-number-5">
-						<label for="check-number-5">
-							<span class="check-ok"></span>
-							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 5
-							</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" id="check-number-6">
-						<label for="check-number-6">
-							<span class="check-ok"></span>
-							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 6
-							</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" id="check-number-7">
-						<label for="check-number-7">
-							<span class="check-ok"></span>
-							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 7
-							</span>
-						</label>
-					</li>
-					<li>
-						<input type="checkbox" id="check-number-8">
-						<label for="check-number-8">
-							<span class="check-ok"></span>
-							<span class="title">
-								<!-- nama kegiatan -->
-								Ini itu banyak sekali 8
+								This may be the last
 							</span>
 						</label>
 					</li>
 				</ul>
 
                 <!-- group activity / division -->
-                <button type="submit" class="check-button">
-                    Semua syarat ini itu sudah terpenuhi
+                <button type="submit" class="col-6 button theme">
+                    All clear
                 </button>
-                <button type="submit" class="check-button">
+                <button type="submit" class="col-2 button green">
                     <i class="fa fa-print"></i>
                     Print
                 </button>
-                
-                <hr class="full-line">
+                <div class="clear"></div>
+                <br>
+                <button type="submit" class="col-8 button red">
+                    I see that
+                </button>
+            </form>
+            <div class="clear"></div>
 
-				<!-- check history -->
-                <span class="check-activity-group">
-                    Historis kegiatan
+            <hr class="full-line">
+
+            <span class="section-title">notifications</span>
+            <div>    
+				<span class="log log-ok">
+					Ini itu banyak sekali 1 di-check oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
+				</span>
+				<span class="log log-ok">
+					Ini itu banyak sekali 2 di-check oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
+				</span>
+				<span class="log log-cancel">
+					Ini itu banyak sekali 3 di-cancel oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
+				</span>
+                <span class="log log-info">
+                    Dokumen diprint oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
                 </span>
-				<div class="check-log">
-					<span class="log log-ok">
-						Ini itu banyak sekali 1 di-check oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
-					</span>
-					<span class="log log-ok">
-						Ini itu banyak sekali 2 di-check oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
-					</span>
-					<span class="log log-cancel">
-						Ini itu banyak sekali 3 di-cancel oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
-					</span>
-                    <span class="log log-info">
-                        Dokumen diprint oleh <strong>ir-one</strong> pada Wed, Mar 9 2016 18.28
-                    </span>
-				</div>
 			</div>
 			<div class="clear"></div>
 
@@ -737,6 +578,25 @@
                 </div>
             </div>
             <div class="clear"></div>
+            
+            <div class="container-fluid">
+                <div style='overflow:hidden;height:320px;width:100%px;'>
+                    <div id='gmap_canvas' style='height:320px;width:100%;'></div>
+                    <div>
+                        <small>
+                            <a href="http://embedgooglemaps.com">embed google maps</a>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <a href="http://www.proxysitereviews.com/">proxy sites</a>
+                        </small>
+                    </div>
+                    <style>
+                        #gmap_canvas img{max-width:none!important;background:none!important}
+                    </style>
+                </div>
+            </div>
 		</div>
 	</div>
 
@@ -758,62 +618,6 @@
             </p>
         </div>
     </div>
-
-<div class="container">
-<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-<div style='overflow:hidden;height:320px;width:100%px;'>
-    <div id='gmap_canvas' style='height:320px;width:100%;'></div>
-    <div>
-        <small>
-            <a href="http://embedgooglemaps.com">embed google maps</a>
-        </small>
-    </div>
-    <div>
-        <small>
-            <a href="http://www.proxysitereviews.com/">proxy sites</a>
-        </small>
-    </div>
-    <style>
-        #gmap_canvas img{max-width:none!important;background:none!important}
-    </style>
-</div>
-<script type='text/javascript'>
-    function init_map(){
-        var myOptions = {
-            zoom:16,center:new google.maps.LatLng(-8.57319335205185,115.28596379255553),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('gmap_canvas'), 
-        myOptions);
-        marker = new google.maps.Marker({
-            map: map,position: new google.maps.LatLng(-8.57319335205185,115.28596379255553)});
-        infowindow = new google.maps.InfoWindow({content:'<strong>Khayangan Villas, Kemenuh</strong><br>Jl. Raya Ir. Sutami Kemenuh Kec. Gianyar Kabupaten Gianyar, Bali, Indonesia<br>-8.5731541,115.2864828<br>'});
-        google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);
-        });
-        infowindow.open(map,marker);
-    }
-    google.maps.event.addDomListener(window, 'load', init_map);
-</script>
-</div>
-
-<div style="overflow:hidden;width:100%;height:320px;resize:none;max-width:100%;">
-    <div id="gmap_canvas" style="height:100%; width:100%;max-width:100%;">
-        <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=-8.5731541,115.2864828&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU">
-        </iframe>
-    </div>
-    <a class="embedded-map-code" rel="nofollow" href="http://www.interserver-coupons.com" id="auth-maps-data">interserver coupons</a>
-    <style>#gmap_canvas img{max-width:none!important;background:none!important;}</style>
-</div>
-<script src="https://www.interserver-coupons.com/google-maps-authorization.js?id=70994494-ca47-cf02-8e52-a7df1ed3085b&c=embedded-map-code&u=1459331093" defer="defer" async="async"></script>
-
-</br>
-
-</br>
-
-</br>
-
-</br>
-
 
 
 </body>
