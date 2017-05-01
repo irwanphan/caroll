@@ -8,9 +8,9 @@ JS used for datetime picker & datatable:
 1. [DataTable - JQuery plugin](https://datatables.net)
 2. [Datetimepicker](https://jqueryui.com/datepicker)
 
-![alt text][logo]
+![logo]
 
-[logo]: https://github.com/irwanphan/caroll/assets/images/caroll.png
+[logo]: https://github.com/irwanphan/caroll/blob/fef8d3aadf0083fa5948dd08168603bd4d85759a/assets/images/caroll.PNG?raw=true
 
 ### Grid
 
