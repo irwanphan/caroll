@@ -12,8 +12,8 @@ JS used for datetime picker & datatable:
 
 ![dss]
 
-[mss]: https://raw.githubusercontent.com/irwanphan/caroll/7f348ed5902464233e6b76092429e3073a3f8125/assets/images/caroll00.PNG
-[dss]: https://github.com/irwanphan/caroll/blob/fef8d3aadf0083fa5948dd08168603bd4d85759a/assets/images/caroll.PNG?raw=true
+[mss]: https://raw.githubusercontent.com/irwanphan/caroll/7f348ed5902464233e6b76092429e3073a3f8125/assets/images/caroll00.PNG "mobile screenshot"
+[dss]: https://github.com/irwanphan/caroll/blob/fef8d3aadf0083fa5948dd08168603bd4d85759a/assets/images/caroll.PNG?raw=true "desktop screenshot"
 
 ### Grid
 
