@@ -27,10 +27,10 @@ The usage is really simple, e.g:
 | col-3      | three columns width  |
 | col-12     | twelve columns width |
 
-_note: it's been a long time since first creation on tatami and has npt been updated since then, the grid system was for learning purpose, but hopefully can be used for quick prototyping._
+_note: it's been a long time since first creation on tatami and has not been updated since then, the grid system was for learning purpose, but hopefully can be used for quick gridding._
 _tatami container width and number of columns can be adjusted at **tatami-base.sass**._
 
-Other than the __tatami__, __grid-foundation.css__ is also available within the assets/css folder, so if you are familiar with [Zurb Foundation](foundation.zurb.com), you may switch the link css to grid-foundation.css.
+Other than the __tatami__, __grid-foundation.css__ is also available within the assets/css source folder, so if you are familiar with [Zurb Foundation](foundation.zurb.com), you may switch the link css to grid-foundation.css which is really recommended.
 
 ### Button
 
