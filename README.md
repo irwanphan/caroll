@@ -5,7 +5,7 @@ Caroll is a simple and light admin template.
 Main part of this template is using only HTML and CSS
 
 JS used for datetime picker & datatable:
-1. [DataTable - JQuery plugin](https://datatables.net)
+1. [DataTable - JQuery plugin](https://datatables.net) (170611 - removed from source)
 2. [Datetimepicker](https://jqueryui.com/datepicker)
 
 ![mss]
