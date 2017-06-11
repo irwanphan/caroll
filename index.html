@@ -39,8 +39,6 @@
     <link rel="stylesheet" type="text/css"  href="assets/css/overwrite.css">
     
     <!-- JQuery DataTable -->
-    <link rel="stylesheet" href="assets/plugin/datatable/media/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="assets/plugin/datatable/extensions/Responsive/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="assets/plugin/jquery-datetimepicker/jquery.datetimepicker.css">
     <!-- FontAwesome.org -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -48,17 +46,9 @@
 	<!-- Included javascript files 
 	================================================== -->
 	<script type="text/javascript" src="assets/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="assets/plugin/datatable/media/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/plugin/datatable/extensions/Responsive/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="assets/plugin/jquery-datetimepicker/jquery.datetimepicker.full.js"></script>
     <script type="text/javascript">
         $(document).ready( function() {
-            $('#table-app').dataTable({
-                responsive: true
-            });
-            $('#table-app-fin').dataTable({
-                responsive: true
-            });
 
             var datetimepicker_params = {timepicker: false, format: 'Y-m-d'};
 
@@ -66,26 +56,6 @@
 
 		});
 	</script>
-
-    <!-- map sample -->
-    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-    <script type='text/javascript'>
-        function init_map(){
-            var myOptions = {
-                zoom:16,center:new google.maps.LatLng(-8.57319335205185,115.28596379255553),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            map = new google.maps.Map(document.getElementById('gmap_canvas'), 
-            myOptions);
-            marker = new google.maps.Marker({
-                map: map,position: new google.maps.LatLng(-8.57319335205185,115.28596379255553)});
-            infowindow = new google.maps.InfoWindow({content:'<strong>Khayangan Villas, Kemenuh</strong><br>Jl. Raya Ir. Sutami Kemenuh Kec. Gianyar Kabupaten Gianyar, Bali, Indonesia<br>-8.5731541,115.2864828<br>'});
-            google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);
-            });
-            infowindow.open(map,marker);
-        }
-        google.maps.event.addDomListener(window, 'load', init_map);
-    </script>
 
 </head>
 
@@ -579,24 +549,6 @@
             </div>
             <div class="clear"></div>
             
-            <div class="container-fluid">
-                <div style='overflow:hidden;height:320px;width:100%px;'>
-                    <div id='gmap_canvas' style='height:320px;width:100%;'></div>
-                    <div>
-                        <small>
-                            <a href="http://embedgooglemaps.com">embed google maps</a>
-                        </small>
-                    </div>
-                    <div>
-                        <small>
-                            <a href="http://www.proxysitereviews.com/">proxy sites</a>
-                        </small>
-                    </div>
-                    <style>
-                        #gmap_canvas img{max-width:none!important;background:none!important}
-                    </style>
-                </div>
-            </div>
 		</div>
 	</div>
 
